@@ -1,1 +1,1 @@
-# odata_scraper
+# OData scraper
