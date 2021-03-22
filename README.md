@@ -24,7 +24,7 @@ Options:
   -p, --persist                  Persist files on disk (default: false)
   -s, --search <Directory>       Defines the string to search for. (default: "")
   -v, --verbose                  Set verbose on or off
-  -U, --User <username>          Set username for odata request (default: "CPIC_EC@knappagT1")
-  -P, --Password <password>      Set password for odata request (default: "welcome2020")
+  -U, --User <username>          Set username for odata request
+  -P, --Password <password>      Set password for odata request
   -h, --help                     display help for command
 ```
