@@ -16,7 +16,7 @@ program
 .addOption(new commander.Option('-s, --search <Directory>', 'Defines the string to search for.').default(''))
 .addOption(new commander.Option('-v, --verbose', 'Set verbose on or off'))
 .addOption(new commander.Option('-U, --User <username>', 'Set username for odata request').default('CPIC_EC@knappagT1'))
-.addOption(new commander.Option('-P, --Password <password>', 'Set password for odata request').default("welcome2020"))
+.addOption(new commander.Option('-P, --Password <password>', 'Set password for odata request'))
 .parse();
 
 const oArgs = program.opts();
