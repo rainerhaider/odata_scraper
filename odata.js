@@ -2,6 +2,7 @@ const CONVERT = require('xml-js');
 const REQUEST = require("sync-request");
 const JSONPATH = require('jsonpath');
 const HELPER = require('./helper');
+const fs = require('fs');
 
 /**
  * 
@@ -93,7 +94,7 @@ function searchForKey(sEntityName, aEntities, oArgs) {
             if (oEntity[sProperty]) {
               searchForKey(sEntityName, [oEntity[sProperty]], oArgs);
             }
-          } else if (typeof oEntity[sProperty] === 'string')
+          } else if (typeof oEntity[sProperty] === 'string') {
             if (!oArgs.caseSensitive) {
               sCompareLeft = sProperty.toLowerCase();
               sCompareRight = oArgs.search.trim().toLowerCase();
@@ -101,11 +102,12 @@ function searchForKey(sEntityName, aEntities, oArgs) {
               sCompareLeft = sProperty.trim();
               sCompareRight = oArgs.search.trim();
             }
-          if (sCompareLeft.includes(sCompareRight)) {
-            if (!oArgs.persist) {
-              logToConsole(sEntityName, sProperty, oEntity[sProperty], oEntity, oArgs.verbose);
-            } else {
-              logToFile(oArgs, sEntityName, sProperty, oEntity[sProperty], oEntity);
+            if (sCompareLeft.includes(sCompareRight)) {
+              if (!oArgs.persist) {
+                logToConsole(sEntityName, sProperty, oEntity[sProperty], oEntity, oArgs.verbose);
+              } else {
+                logToFile(oArgs, sEntityName, sProperty, oEntity[sProperty], oEntity);
+              }
             }
           }
         }
@@ -169,7 +171,7 @@ function getData(sUri, sUser, sPassword, bJson = false) {
     const sUtf8 = oResponse.getBody('utf8');
     return sUtf8;
   } catch (error) {
-    return "{}";    
+    return "{}";
   }
 }
 
